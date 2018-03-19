@@ -19,6 +19,7 @@ namespace ExamPaper.Models
         public string Verified { get; set; }
         public int Answer { get; set; }
         public string Approve { get; set; }
+        public string Date { get; set; }
         public int UserId { get; set; }
         public int CategoyId { get; set; }
 
