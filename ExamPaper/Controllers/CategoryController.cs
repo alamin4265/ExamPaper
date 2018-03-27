@@ -17,7 +17,8 @@ namespace ExamPaper.Controllers
         // GET: Category
         public ActionResult Index()
         {
-            return View(db.Category.ToList());
+            var category = db.Category.Include(c => c.ParentCategory);
+            return View(category.ToList());
         }
 
         // GET: Category/Details/5
@@ -38,6 +39,7 @@ namespace ExamPaper.Controllers
         // GET: Category/Create
         public ActionResult Create()
         {
+            ViewBag.ParentCategoryId = new SelectList(db.Category, "Id", "Name");
             return View();
         }
 
@@ -46,7 +48,7 @@ namespace ExamPaper.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name")] Category category)
+        public ActionResult Create([Bind(Include = "Id,Name,ParentCategoryId")] Category category)
         {
             if (ModelState.IsValid)
             {
@@ -55,6 +57,7 @@ namespace ExamPaper.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.ParentCategoryId = new SelectList(db.Category, "Id", "Name", category.ParentCategoryId);
             return View(category);
         }
 
@@ -70,6 +73,7 @@ namespace ExamPaper.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.ParentCategoryId = new SelectList(db.Category, "Id", "Name", category.ParentCategoryId);
             return View(category);
         }
 
@@ -78,7 +82,7 @@ namespace ExamPaper.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name")] Category category)
+        public ActionResult Edit([Bind(Include = "Id,Name,ParentCategoryId")] Category category)
         {
             if (ModelState.IsValid)
             {
@@ -86,6 +90,7 @@ namespace ExamPaper.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.ParentCategoryId = new SelectList(db.Category, "Id", "Name", category.ParentCategoryId);
             return View(category);
         }
 
