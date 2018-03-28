@@ -11,17 +11,27 @@ namespace ExamPaper.Models
     public class EnglishQuestionBank
     {
         public int Id { get; set; }
+
+        [Required]
+        [DataType(DataType.MultilineText)]
         public string Question { get; set; }
+        [Required]
         public string OptionA { get; set; }
+        [Required]
         public string OptionB { get; set; }
+
+        [Required]
         public string OptionC { get; set; }
+
+        [Required]
         public string OptionD { get; set; }
-        public string Verified { get; set; }
-        public int Answer { get; set; }
-        public string Approve { get; set; }
-        public string Date { get; set; }
+        [Required]
+        public string Answer { get; set; }
+
+        public bool Approve { get; set; }
+        public DateTime Date { get; set; }
         public int UserId { get; set; }
-        public int CategoyId { get; set; }
+        public int CategoryId { get; set; }
 
         public virtual User User { get; set; }  
         public virtual Category Category { get; set; }

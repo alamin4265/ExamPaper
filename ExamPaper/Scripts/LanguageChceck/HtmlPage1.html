@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    English Only (onchange): <input type="text" id="txtEnglish" onchange="CheckEnglishOnly(this);" />
+    Arabic Only (onchange): <input type="text" id="txtArabic" onchange="CheckArabicOnly(this);" />
+
+
+    <script src="../jquery-1.10.2.min.js"></script>
+    <script type="text/javascript">
+
+        function CheckEnglishOnly(field) {
+            var sNewVal = "";
+            var sFieldVal = field.value;
+
+            for (var i = 0; i < sFieldVal.length; i++) {
+
+                var ch = sFieldVal.charAt(i);
+
+                var c = ch.charCodeAt(0);
+
+                if (c < 0 || c > 255) {
+                    // Discard
+                }
+                else {
+                    sNewVal += ch;
+                }
+            }
+
+            field.value = sNewVal;
+        }
+
+        function CheckArabicOnly(field) {
+            var sNewVal = "";
+            var sFieldVal = field.value;
+            
+            for (var i = 0; i < sFieldVal.length; i++) {
+
+                var ch = sFieldVal.charAt(i);;
+                var c = ch.charCodeAt(0);
+                
+                if (c < 2437 || c > 2554) {
+                    // Discard
+                }
+                else {
+                    sNewVal += ch;
+                }
+            }
+
+            field.value = sNewVal;
+        }
+
+    </script>
+</body>
+
+</html>

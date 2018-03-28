@@ -10,112 +10,112 @@ using ExamPaper.Models;
 
 namespace ExamPaper.Controllers
 {
-    public class CategoryController : Controller
+    public class BanglaQuestionBankController : Controller
     {
         private _ExamPaper db = new _ExamPaper();
 
-        // GET: Category
+        // GET: BanglaQuestionBank
         public ActionResult Index()
         {
-            var category = db.Category.Include(c => c.ParentCategory);
-            return View(category.ToList());
+            var banglaQuestionBank = db.BanglaQuestionBank.Include(b => b.User);
+            return View(banglaQuestionBank.ToList());
         }
 
-        // GET: Category/Details/5
+        // GET: BanglaQuestionBank/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Category.Find(id);
-            if (category == null)
+            BanglaQuestionBank banglaQuestionBank = db.BanglaQuestionBank.Find(id);
+            if (banglaQuestionBank == null)
             {
                 return HttpNotFound();
             }
-            return View(category);
+            return View(banglaQuestionBank);
         }
 
-        // GET: Category/Create
+        // GET: BanglaQuestionBank/Create
         public ActionResult Create()
         {
-            ViewBag.CategoryId = new SelectList(db.Category, "Id", "Name");
+            ViewBag.UserId = new SelectList(db.User, "Id", "Name");
             return View();
         }
 
-        // POST: Category/Create
+        // POST: BanglaQuestionBank/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,CategoryId")] Category category)
+        public ActionResult Create([Bind(Include = "Id,Question,OptionA,OptionB,OptionC,OptionD,Verified,Answer,Approve,Date,UserId,CategoyId")] BanglaQuestionBank banglaQuestionBank)
         {
             if (ModelState.IsValid)
             {
-                db.Category.Add(category);
+                db.BanglaQuestionBank.Add(banglaQuestionBank);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CategoryId = new SelectList(db.Category, "Id", "Name", category.CategoryId);
-            return View(category);
+            ViewBag.UserId = new SelectList(db.User, "Id", "Name", banglaQuestionBank.UserId);
+            return View(banglaQuestionBank);
         }
 
-        // GET: Category/Edit/5
+        // GET: BanglaQuestionBank/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Category.Find(id);
-            if (category == null)
+            BanglaQuestionBank banglaQuestionBank = db.BanglaQuestionBank.Find(id);
+            if (banglaQuestionBank == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CategoryId = new SelectList(db.Category, "Id", "Name", category.CategoryId);
-            return View(category);
+            ViewBag.UserId = new SelectList(db.User, "Id", "Name", banglaQuestionBank.UserId);
+            return View(banglaQuestionBank);
         }
 
-        // POST: Category/Edit/5
+        // POST: BanglaQuestionBank/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,CategoryId")] Category category)
+        public ActionResult Edit([Bind(Include = "Id,Question,OptionA,OptionB,OptionC,OptionD,Verified,Answer,Approve,Date,UserId,CategoyId")] BanglaQuestionBank banglaQuestionBank)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(category).State = EntityState.Modified;
+                db.Entry(banglaQuestionBank).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CategoryId = new SelectList(db.Category, "Id", "Name", category.CategoryId);
-            return View(category);
+            ViewBag.UserId = new SelectList(db.User, "Id", "Name", banglaQuestionBank.UserId);
+            return View(banglaQuestionBank);
         }
 
-        // GET: Category/Delete/5
+        // GET: BanglaQuestionBank/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Category.Find(id);
-            if (category == null)
+            BanglaQuestionBank banglaQuestionBank = db.BanglaQuestionBank.Find(id);
+            if (banglaQuestionBank == null)
             {
                 return HttpNotFound();
             }
-            return View(category);
+            return View(banglaQuestionBank);
         }
 
-        // POST: Category/Delete/5
+        // POST: BanglaQuestionBank/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Category category = db.Category.Find(id);
-            db.Category.Remove(category);
+            BanglaQuestionBank banglaQuestionBank = db.BanglaQuestionBank.Find(id);
+            db.BanglaQuestionBank.Remove(banglaQuestionBank);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

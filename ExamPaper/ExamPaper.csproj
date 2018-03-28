@@ -148,8 +148,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BanglaQuestionBankController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\EnglishQuestionBankController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -158,6 +161,7 @@
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\EnglishQuestionBank.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\ViewModel\UserRegistrationVM.cs" />
     <Compile Include="Models\_ExamPaper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -181,6 +185,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\LanguageChceck\HtmlPage1.html" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -198,6 +203,18 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\User\Create.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\EnglishQuestionBank\Create.cshtml" />
+    <Content Include="Views\EnglishQuestionBank\Delete.cshtml" />
+    <Content Include="Views\EnglishQuestionBank\Details.cshtml" />
+    <Content Include="Views\EnglishQuestionBank\Edit.cshtml" />
+    <Content Include="Views\EnglishQuestionBank\Index.cshtml" />
+    <Content Include="Views\BanglaQuestionBank\Create.cshtml" />
+    <Content Include="Views\BanglaQuestionBank\Delete.cshtml" />
+    <Content Include="Views\BanglaQuestionBank\Details.cshtml" />
+    <Content Include="Views\BanglaQuestionBank\Edit.cshtml" />
+    <Content Include="Views\BanglaQuestionBank\Index.cshtml" />
     <Content Include="Views\Category\Create.cshtml" />
     <Content Include="Views\Category\Delete.cshtml" />
     <Content Include="Views\Category\Details.cshtml" />
